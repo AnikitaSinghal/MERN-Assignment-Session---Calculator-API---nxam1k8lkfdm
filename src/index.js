@@ -54,7 +54,7 @@ app.post("/add",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
-        sum:num1+num2
+        sum:num1+num2,
     });
 });
 
@@ -64,7 +64,7 @@ app.post("/sub",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"the difference of given two numbers",
-        difference:num1-num2
+        difference:num1-num2,
     });
 });
 
@@ -74,7 +74,7 @@ app.post("/multiply",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"The product of given numbers",
-        result: num1*num2
+        result: num1*num2,
     });
 });
 
@@ -89,7 +89,7 @@ app.post("/divide",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"The division of given numbers",
-        result:num1/num2
+        result:num1/num2,
     });
 });
 
