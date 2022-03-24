@@ -28,10 +28,10 @@ const checkValidInput=(req,res,next)=>{
         status:"error",
         message:"Underflow"
         });
-    if(typeof num1!==="number" || typeof num2!==="number")
+    if(typeof num1!=="number" || typeof num2!=="number")
     return res.status(400).send({
         status:"error",
-        message:"Invalid data types"
+        message:"Invalid Data types"
         });
         next()
 };
@@ -81,7 +81,7 @@ app.post("/multiply",(req,res)=>{
 //Divide
 app.post("/divide",(req,res)=>{
     const {num1,num2}=req.body;
-    if(num2===0)
+    if(num2==0)
     res.status(400).send({
         status:"error",
         message:"Cannot divide by zero"
