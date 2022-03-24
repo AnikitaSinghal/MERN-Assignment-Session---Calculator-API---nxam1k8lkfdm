@@ -34,7 +34,9 @@ const checkValidInput=(req,res,next)=>{
 
 app.use(checkValidInput);
 
-
+app.get("/",(req,res)=>{
+    res.status(200).send("Hello World")
+})
 const upperlimit=1000000;
 const lowerlimit=-1000000;
 
@@ -90,10 +92,6 @@ app.post("/divide",(req,res)=>{
 });
 
 
-// your code goes here
-app.get("/",(req,res)=>{
-    res.status(200).send("Hello World")
-})
 
 
 
