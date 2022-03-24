@@ -21,17 +21,17 @@ const checkValidInput=(req,res,next)=>{
     if(num1>upperlimit||num2>upperlimit)
     return res.status(400).send({
         status:"error",
-        message:"Overflow",
+        message:"Overflow"
         });
     if(num1<lowerlimit||num2<lowerlimit)
     return res.status(400).send({
         status:"error",
-        message:"Underflow",
+        message:"Underflow"
         });
     if(typeof num1!==="number" || typeof num2!==="number")
     return res.status(400).send({
         status:"error",
-        message:"Invalid data types",
+        message:"Invalid data types"
         });
         next()
 };
@@ -54,7 +54,7 @@ app.post("/add",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
-        sum:num1+num2,
+        sum:num1+num2
     });
 });
 
@@ -64,7 +64,7 @@ app.post("/sub",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"the difference of given two numbers",
-        difference:num1-num2,
+        difference:num1-num2
     });
 });
 
@@ -74,7 +74,7 @@ app.post("/multiply",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"The product of given numbers",
-        result: num1*num2,
+        result: num1*num2
     });
 });
 
@@ -89,7 +89,7 @@ app.post("/divide",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"The division of given numbers",
-        result:num1/num2,
+        result:num1/num2
     });
 });
 
