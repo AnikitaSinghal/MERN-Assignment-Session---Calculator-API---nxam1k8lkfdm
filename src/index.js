@@ -16,9 +16,6 @@ app.get("/",(req,res)=>{
     res.status(200).send("Hello World")
 })
 
-const upperlimit=1000000;
-const lowerlimit=-1000000;
-
 const checkValidInput=(req,res,next)=>{
     const {num1,num2}=req.body;
     if(num1>upperlimit||num2>upperlimit)
@@ -31,10 +28,10 @@ const checkValidInput=(req,res,next)=>{
         status:"error",
         message:"Underflow"
         });
-    if(typeof num1!=="number" || typeof num2!=="number")
+    if(typeof num1!==="number" || typeof num2!==="number")
     return res.status(400).send({
         status:"error",
-        message:"Invalid Data types"
+        message:"Invalid data types"
         });
         next()
 };
@@ -42,6 +39,8 @@ const checkValidInput=(req,res,next)=>{
 app.use(checkValidInput);
 
 
+const upperlimit=1000000;
+const lowerlimit=-1000000;
 
 // const setPrecision=(num,precision)=>{
 //     const factor=Math.pow(0,precision)
@@ -55,7 +54,7 @@ app.post("/add",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
-        sum:(num1+num2).toPrecision(2),
+        sum:num1+num2,
     });
 });
 
@@ -65,7 +64,7 @@ app.post("/sub",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"the difference of given two numbers",
-        difference:(num1-num2).toPrecision(2),
+        difference:num1-num2,
     });
 });
 
@@ -75,14 +74,14 @@ app.post("/multiply",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"The product of given numbers",
-        result: (num1*num2).toPrecision(2),
+        result: num1*num2,
     });
 });
 
 //Divide
 app.post("/divide",(req,res)=>{
     const {num1,num2}=req.body;
-    if(num2==0)
+    if(num2===0)
     res.status(400).send({
         status:"error",
         message:"Cannot divide by zero"
@@ -90,7 +89,7 @@ app.post("/divide",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"The division of given numbers",
-        result:(num1/num2).toPrecision(2),
+        result:num1/num2,
     });
 });
 
