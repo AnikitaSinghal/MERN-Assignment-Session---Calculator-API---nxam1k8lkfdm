@@ -60,7 +60,7 @@ app.post("/subtract",(req,res)=>{
     });
 });
 app.post("/multiply",(req,res)=>{
-    const {num1,num2}=req.body;
+    const {num1,num2}=req.body
     if(num1>upperlimit||num2>upperlimit)
     res.status(400).send({
         status:"Error",
