@@ -21,17 +21,17 @@ const checkValidInput=(req,res,next)=>{
     if(num1>upperlimit||num2>upperlimit)
     return res.status(400).send({
         status:"error",
-        message:"Overflow"
+        message:"Overflow",
         });
     if(num1<lowerlimit||num2<lowerlimit)
     return res.status(400).send({
         status:"error",
-        message:"Underflow"
+        message:"Underflow",
         });
     if(typeof num1!=="number" || typeof num2!=="number")
     return res.status(400).send({
         status:"error",
-        message:"Invalid Data types"
+        message:"Invalid data types",
         });
         next()
 };
