@@ -15,34 +15,35 @@ const upperlimit=1000000
 const lowerlimit=-1000000
 app.post("/add",(req,res)=>{
     const {num1,num2}=req.body
-    
-    if(num1>upperlimit||num1<lowerlimit||num2>upperlimit||num2<lowerlimit||
-        !isNaN(num1)||!isNaN(num2))
-        res.status(400).send({
-            status:"Error",
-            message:"Error occured"
-        })
+    if(num1>upperlimit||num2>upperlimit)
+    res.status(400).send({
+        status:"Error",
+        message:"Overflow"
+        });
+    if(num1<lowerlimit||num2<lowerlimit)
+    res.status(400).send({
+        status:"Error",
+        message:"Underflolw"
+        });
+    if(typeof num1!=="number" || typeof num2!=="number")
+    res.status(400).send({
+        status:"Error",
+        message:"Invalid Data types"
+        });
     res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
-        sum: nnum1+num2
-    })
-})
+        sum:num1+num2,
+    });
+});
+
 
 // your code goes here
 app.get("/",(req,res)=>{
     res.status(200).send("Hello World")
 })
 
-app.post("/subtract",(req,res)=>{
 
-})
-app.post("/multiply",(req,res)=>{
-
-})
-app.post("/divide",(req,res)=>{
-
-})
 
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
