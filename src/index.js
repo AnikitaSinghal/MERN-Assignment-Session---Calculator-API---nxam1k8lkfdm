@@ -15,17 +15,17 @@ app.use(bodyParser.json())
 const checkValidInput=(req,res,next)=>{
     const {num1,num2}=req.body;
     if(num1>upperlimit||num2>upperlimit)
-    res.status(400).send({
+    return res.status(400).send({
         status:"error",
         message:"Overflow"
         });
     if(num1<lowerlimit||num2<lowerlimit)
-    res.status(400).send({
+    return res.status(400).send({
         status:"error",
         message:"Underflow"
         });
     if(typeof num1!=="number" || typeof num2!=="number")
-    res.status(400).send({
+    return res.status(400).send({
         status:"error",
         message:"Invalid Data types"
         });
@@ -34,15 +34,23 @@ const checkValidInput=(req,res,next)=>{
 
 app.use(checkValidInput);
 
+
+const upperlimit=1000000;
+const lowerlimit=-1000000;
+
+const setPrecision=(num,precision)=>{
+    const factor=Math.pow(0,precision)
+    const result=Math.round(num*factor)/factor
+    return result
+}
+
 //Addition
-const upperlimit=1000000
-const lowerlimit=-1000000
 app.post("/add",(req,res)=>{
     const {num1,num2}=req.body;
     res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
-        sum:num1+num2,
+        sum:setPrecision(num1+num2,2),
     });
 });
 
@@ -52,7 +60,7 @@ app.post("/sub",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"the difference of given two numbers",
-        difference:num1-num2,
+        difference:setPrecision(num1-num2,2),
     });
 });
 
@@ -62,7 +70,7 @@ app.post("/multiply",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"The product of given numbers",
-        result: num1*num2,
+        result: setPrecision(num1*num2,2),
     });
 });
 
@@ -74,25 +82,10 @@ app.post("/divide",(req,res)=>{
         status:"error",
         message:"Cannot divide by zero"
     });
-    if(num1>upperlimit||num2>upperlimit)
-    res.status(400).send({
-        status:"error",
-        message:"Overflow"
-        });
-    if(num1<lowerlimit||num2<lowerlimit)
-    res.status(400).send({
-        status:"error",
-        message:"Underflolw"
-        });
-    if(typeof num1!=="number" || typeof num2!=="number")
-    res.status(400).send({
-        status:"error",
-        message:"Invalid Data types"
-        });
     res.status(200).send({
         status:"success",
         message:"The division of given numbers",
-        result: num1*num2,
+        result: setPrecision(num1/num2,2),
     });
 });
 
