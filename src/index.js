@@ -60,7 +60,7 @@ app.post("/subtract",(req,res)=>{
     });
 });
 app.post("/multiply",(req,res)=>{
-    const {num1,num2}=req.body
+    const {num1,num2}=req.body;
     if(num1>upperlimit||num2>upperlimit)
     res.status(400).send({
         status:"Error",
@@ -78,7 +78,35 @@ app.post("/multiply",(req,res)=>{
         });
     res.status(200).send({
         status:"Success",
-        message:"the sum of given two numbers",
+        message:"the product of given two numbers",
+        result: num1*num2,
+    });
+});
+app.post("/divide",(req,res)=>{
+    const {num1,num2}=req.body;
+    if(num2===0)
+    res.status(400).send({
+        status:"Error",
+        message:"Cannot divide by zero"
+    });
+    if(num1>upperlimit||num2>upperlimit)
+    res.status(400).send({
+        status:"Error",
+        message:"Overflow"
+        });
+    if(num1<lowerlimit||num2<lowerlimit)
+    res.status(400).send({
+        status:"Error",
+        message:"Underflolw"
+        });
+    if(typeof num1!=="number" || typeof num2!=="number")
+    res.status(400).send({
+        status:"Error",
+        message:"Invalid Data types"
+        });
+    res.status(200).send({
+        status:"Success",
+        message:"the product of given two numbers",
         result: num1*num2,
     });
 });
