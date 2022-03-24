@@ -25,7 +25,7 @@ app.post("/add",(req,res)=>{
         status:"Error",
         message:"Underflolw"
         });
-    if(!isNaN(num1) || !isNaN(num2))
+    if(typeof num1!=="number" || typeof num2!=="number")
     res.status(400).send({
         status:"Error",
         message:"Invalid Data types"
