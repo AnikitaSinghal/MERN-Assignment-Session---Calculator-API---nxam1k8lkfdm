@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
+app.get("/",(req,res)=>{
+    res.status(200).send("Hello World")
+})
+
 const checkValidInput=(req,res,next)=>{
     const {num1,num2}=req.body;
     if(num1>upperlimit||num2>upperlimit)
@@ -34,9 +38,7 @@ const checkValidInput=(req,res,next)=>{
 
 app.use(checkValidInput);
 
-app.get("/",(req,res)=>{
-    res.status(200).send("Hello World")
-})
+
 const upperlimit=1000000;
 const lowerlimit=-1000000;
 
