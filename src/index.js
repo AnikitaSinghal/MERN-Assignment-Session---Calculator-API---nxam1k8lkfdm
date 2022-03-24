@@ -11,14 +11,21 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
-
+const upperlimit=1000000
+const lowerlimit=-1000000
 app.post("/add",(req,res)=>{
-    const numbers=req.body
-    const sum=numbers.num1+numbers.num2;
-    res.send(200).send({
+    const {num1,num2}=req.body
+    
+    if(num1>upperlimit||num1<lowerlimit||num2>upperlimit||num2<lowerlimit||
+        !isNaN(num1)||!isNaN(num2))
+        res.status(400).send({
+            status:"Error",
+            message:"Error occured"
+        })
+    res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
-        sum: sum
+        sum: nnum1+num2
     })
 })
 
