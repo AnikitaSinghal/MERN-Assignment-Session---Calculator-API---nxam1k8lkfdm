@@ -18,12 +18,12 @@ app.get("/",(req,res)=>{
 
 const checkValidInput=(req,res,next)=>{
     const {num1,num2}=req.body;
-    if(num1>upperlimit||num2>upperlimit)
+    if(num1>upperlimit || num2>upperlimit || sum>upperlimit)
     return res.status(400).send({
         status:"error",
         message:"Overflow"
         });
-    if(num1<lowerlimit||num2<lowerlimit)
+    if(num1<lowerlimit || num2<lowerlimit || result<lowerlimit)
     return res.status(400).send({
         status:"error",
         message:"Underflow"
