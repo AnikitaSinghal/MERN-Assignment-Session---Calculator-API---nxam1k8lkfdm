@@ -82,7 +82,7 @@ app.post("/multiply",(req,res)=>{
 app.post("/divide",(req,res)=>{
     const {num1,num2}=req.body;
     if(num2==0)
-    res.status(400).send({
+    res.status(200).send({
         status:"error",
         message:"Cannot divide by zero"
     });
