@@ -61,7 +61,7 @@ app.post("/add",(req,res)=>{
     res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
-        sum:num1+num2,
+        sum:sum,
     });
 });
 
@@ -78,10 +78,16 @@ app.post("/sub",(req,res)=>{
 //Multiply
 app.post("/multiply",(req,res)=>{
     const {num1,num2}=req.body;
+    result= num1*num2;
+    if(result<lowerlimit)
+    return res.status(200).send({
+        status:"error",
+        message:"Underflow"
+        });
     res.status(200).send({
         status:"Success",
         message:"The product of given numbers",
-        result: num1*num2,
+        result: result,
     });
 });
 
