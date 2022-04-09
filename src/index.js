@@ -51,6 +51,12 @@ const lowerlimit=-1000000;
 //Addition
 app.post("/add",(req,res)=>{
     const {num1,num2}=req.body;
+    if(sum>upperlimit)
+    res.status(200).send({
+        status:"Success",
+        message:"Overflow",
+        
+    });
     res.status(200).send({
         status:"Success",
         message:"the sum of given two numbers",
