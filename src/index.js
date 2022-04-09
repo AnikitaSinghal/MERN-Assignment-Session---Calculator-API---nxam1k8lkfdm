@@ -79,7 +79,7 @@ app.post("/sub",(req,res)=>{
 app.post("/multiply",(req,res)=>{
     const {num1,num2}=req.body;
     result= num1*num2;
-    if(result<lowerlimit)
+    if(result<=lowerlimit)
     res.status(200).send({
         status:"error",
         message:"Overflow",
