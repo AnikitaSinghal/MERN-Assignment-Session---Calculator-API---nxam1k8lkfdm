@@ -29,7 +29,7 @@ const checkValidInput=(req,res,next)=>{
         message:"Underflow"
         });
     if(typeof num1!=="number" || typeof num2!=="number")
-    return res.status(400).send({
+    return res.status(200).send({
         status:"error",
         message:"Invalid Data types"
         });
