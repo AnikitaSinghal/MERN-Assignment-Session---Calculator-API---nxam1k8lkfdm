@@ -24,7 +24,7 @@ const checkValidInput=(req,res,next)=>{
         message:"Overflow"
         });
     if(num1<lowerlimit || num2<lowerlimit )
-    return res.status(400).send({
+    return res.status(200).send({
         status:"error",
         message:"Underflow"
         });
