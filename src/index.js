@@ -82,7 +82,7 @@ app.post("/multiply",(req,res)=>{
     if(result<lowerlimit)
     return res.status(400).send({
         status:"error",
-        message:"Overflow",
+        message:"Underflow",
         });
     res.status(200).send({
         status:"Success",
