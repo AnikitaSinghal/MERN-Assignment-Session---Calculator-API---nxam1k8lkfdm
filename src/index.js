@@ -80,7 +80,7 @@ app.post("/multiply",(req,res)=>{
     const {num1,num2}=req.body;
     result= num1*num2;
     if(result<lowerlimit)
-    return res.status(400).send({
+    res.status(200).send({
         status:"error",
         message:"Overflow",
         });
@@ -96,7 +96,7 @@ app.post("/divide",(req,res)=>{
     const {num1,num2}=req.body;
     result=num1/num2;
     if(result<lowerlimit)
-    return res.status(400).send({
+    res.status(200).send({
         status:"error",
         message:"Overflow",
         });
