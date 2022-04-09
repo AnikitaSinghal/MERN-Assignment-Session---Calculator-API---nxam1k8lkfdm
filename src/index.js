@@ -31,7 +31,7 @@ const checkValidInput=(req,res,next)=>{
     if(typeof num1!=="number" || typeof num2!=="number")
     return res.status(200).send({
         status:"error",
-        message:"Invalid Data types"
+        message:"Invalid data types"
         });
         next();
 };
