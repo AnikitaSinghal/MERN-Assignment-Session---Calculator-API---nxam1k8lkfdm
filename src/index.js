@@ -19,7 +19,7 @@ app.get("/",(req,res)=>{
 const checkValidInput=(req,res,next)=>{
     const {num1,num2}=req.body;
     if(num1>=upperlimit || num2>=upperlimit )
-    return res.status(400).send({
+    return res.status(200).send({
         status:"error",
         message:"Overflow"
         });
