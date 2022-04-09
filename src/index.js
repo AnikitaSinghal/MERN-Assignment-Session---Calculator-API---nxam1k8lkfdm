@@ -94,12 +94,6 @@ app.post("/multiply",(req,res)=>{
 //Divide
 app.post("/divide",(req,res)=>{
     const {num1,num2}=req.body;
-    result=num1/num2;
-    if(result<lowerlimit)
-    res.status(200).send({
-        status:"error",
-        message:"Overflow",
-        });
     if(num2==0)
     res.status(200).send({
         status:"error",
@@ -108,7 +102,7 @@ app.post("/divide",(req,res)=>{
     res.status(200).send({
         status:"success",
         message:"The division of given numbers",
-        result:result,
+        result:num1/num2,
     });
 });
 
